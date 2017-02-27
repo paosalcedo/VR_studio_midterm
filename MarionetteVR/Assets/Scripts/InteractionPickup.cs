@@ -6,8 +6,8 @@ using Valve.VR.InteractionSystem;
 public class InteractionPickup : MonoBehaviour {
 
 
-	Vector3 lastPosition, fallbackVelocity;
-	Quaternion lastRotation, fallbackTorque;
+	Vector3 lastPosition; // fallbackVelocity
+	Quaternion lastRotation; // fallbackTorque
 	GameObject block;
 
 	// do this stuff for fallback mouse 2D support
@@ -18,13 +18,13 @@ public class InteractionPickup : MonoBehaviour {
 
 			// manually record velocity
 
-			fallbackVelocity = (transform.position - lastPosition) * 20f;
+//			fallbackVelocity = (transform.position - lastPosition) * 20f;
 
 			lastPosition = transform.position;
 
 			// manually record angular velocity
 
-			fallbackTorque = Quaternion.FromToRotation( lastRotation.eulerAngles, transform.eulerAngles );
+//			fallbackTorque = Quaternion.FromToRotation( lastRotation.eulerAngles, transform.eulerAngles );
 
 			lastRotation = transform.rotation;
 
