@@ -5,7 +5,7 @@ using Valve.VR.InteractionSystem;
 
 public class InteractionPickup : MonoBehaviour {
 
-
+	GameObject ragdoll;
 	Vector3 lastPosition; // fallbackVelocity
 	Quaternion lastRotation; // fallbackTorque
 	GameObject block;
@@ -41,12 +41,7 @@ public class InteractionPickup : MonoBehaviour {
 		// this applies to either Vive controller
 
 		if ( hand.GetStandardInteractionButton() == true ) { // on Vive controller, this is trigger
-
-
-
 			hand.AttachObject( gameObject );
-
-
 		}
 
 	}
@@ -56,9 +51,9 @@ public class InteractionPickup : MonoBehaviour {
 	// this happens when this object is attached to a hand, for whatever reason
 
 	void OnAttachedToHand( Hand hand ) {
-
 		GetComponent<Rigidbody>().isKinematic = true; // turn off physics so we can hold it
-
+		ragdoll = GameObject.Find("Humanoid_ragdoll");
+		ragdoll.SendMessage("KinematicOn"); // turn off physics on ragdoll also; make all ragdoll objects and children kinematic.
 	}
 
 
@@ -68,9 +63,7 @@ public class InteractionPickup : MonoBehaviour {
 	void HandAttachedUpdate( Hand hand ) {
 
 		if ( hand.GetStandardInteractionButton() == false ) { // on Vive controller, this is trigger
-
 			hand.DetachObject( gameObject );
-
 		}
 
 	}
@@ -80,11 +73,9 @@ public class InteractionPickup : MonoBehaviour {
 	// this happens when the object is detached from a hand, for whatever reason
 
 	void OnDetachedFromHand( Hand hand ) {
-
 		GetComponent<Rigidbody>().isKinematic = false; // turns on physics
-
-
-
+		ragdoll = GameObject.Find("Humanoid_ragdoll");
+		ragdoll.SendMessage("KinematicOff"); // turn physics back on.
 		// apply forces to it, as if we're throwing it
 
 //		GetComponent<Rigidbody>().AddForce( SteamVR.active ? hand.GetTrackedObjectVelocity() : fallbackVelocity, ForceMode.Impulse );
