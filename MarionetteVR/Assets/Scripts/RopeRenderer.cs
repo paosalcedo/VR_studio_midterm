@@ -12,7 +12,7 @@ public class RopeRenderer : MonoBehaviour {
 	void Start () {
 		lr = gameObject.AddComponent<LineRenderer> ();
 		lr.material = new Material (Shader.Find("Standard"));
-		lr.widthMultiplier = 0.01f;
+		lr.widthMultiplier = 0.005f;
 		lr.numPositions = 2;
 	}
 	
