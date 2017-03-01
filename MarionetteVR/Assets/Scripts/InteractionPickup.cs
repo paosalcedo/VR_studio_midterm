@@ -70,7 +70,7 @@ public class InteractionPickup : MonoBehaviour {
 	// this happens when the object is detached from a hand, for whatever reason
 
 	void OnDetachedFromHand( Hand hand ) {
-		GetComponent<Rigidbody>().isKinematic = false; // turns on physics
+//		GetComponent<Rigidbody>().isKinematic = false; // turns on physics
 
 		// apply forces to it, as if we're throwing it
 
