@@ -5,10 +5,9 @@ using Valve.VR.InteractionSystem;
 
 public class InteractionPickup : MonoBehaviour {
 
-	GameObject ragdoll;
 	Vector3 lastPosition; // fallbackVelocity
 	Quaternion lastRotation; // fallbackTorque
-	GameObject block;
+	//GameObject block;
 
 	// do this stuff for fallback mouse 2D support
 
@@ -52,8 +51,6 @@ public class InteractionPickup : MonoBehaviour {
 
 	void OnAttachedToHand( Hand hand ) {
 		GetComponent<Rigidbody>().isKinematic = true; // turn off physics so we can hold it
-		ragdoll = GameObject.Find("Humanoid_ragdoll");
-		ragdoll.SendMessage("KinematicOn"); // turn off physics on ragdoll also; make all ragdoll objects and children kinematic.
 	}
 
 
@@ -74,8 +71,7 @@ public class InteractionPickup : MonoBehaviour {
 
 	void OnDetachedFromHand( Hand hand ) {
 		GetComponent<Rigidbody>().isKinematic = false; // turns on physics
-		ragdoll = GameObject.Find("Humanoid_ragdoll");
-		ragdoll.SendMessage("KinematicOff"); // turn physics back on.
+
 		// apply forces to it, as if we're throwing it
 
 //		GetComponent<Rigidbody>().AddForce( SteamVR.active ? hand.GetTrackedObjectVelocity() : fallbackVelocity, ForceMode.Impulse );
