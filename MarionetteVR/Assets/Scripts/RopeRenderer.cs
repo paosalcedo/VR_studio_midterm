@@ -11,9 +11,18 @@ public class RopeRenderer : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		lr = gameObject.AddComponent<LineRenderer> ();
-		lr.material = new Material (Shader.Find("Standard"));
+		lr.material = new Material (Shader.Find("Sprites/Default"));
 		lr.widthMultiplier = 0.005f;
 		lr.numPositions = 2;
+
+		float a = 0.4f;
+		float t = 0f;
+		Gradient gradient = new Gradient();
+		gradient.SetKeys(
+			new GradientColorKey[] { new GradientColorKey(Color.white, 0.0f), new GradientColorKey(Color.black, 1.0f) },
+			new GradientAlphaKey[] { new GradientAlphaKey(a, 0.0f), new GradientAlphaKey(t, 1.0f) }
+		);
+		lr.colorGradient = gradient;
 	}
 	
 	// Update is called once per frame
