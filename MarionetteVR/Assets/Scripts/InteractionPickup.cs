@@ -10,10 +10,12 @@ public class InteractionPickup : MonoBehaviour {
 	//GameObject block;
 	// do this stuff for fallback mouse 2D support
 
-
+	DoubleLimbControl stickHandle;
 
 
 	void Start(){
+		stickHandle = gameObject.GetComponent<DoubleLimbControl> ();
+
 
 	}
 
@@ -43,11 +45,9 @@ public class InteractionPickup : MonoBehaviour {
 
 	void HandHoverUpdate( Hand hand ) {
 
-		// this applies to either Vive controller
-
-			if (hand.GetStandardInteractionButtonDown () == true) { // on Vive controller, this is trigger
-//			Debug.Log("yes");
-				hand.AttachObject (gameObject);
+		if (hand.GetStandardInteractionButtonDown () == true) { // on Vive controller, this is trigger
+			hand.AttachObject (gameObject);
+			stickHandle.SendMessage ("IdentifyAttached");
 
 			}
 		}
@@ -68,6 +68,7 @@ public class InteractionPickup : MonoBehaviour {
 
 		if ( hand.GetStandardInteractionButtonDown() == true ) { // on Vive controller, this is trigger
 			hand.DetachObject( gameObject );
+			stickHandle.SendMessage ("IdentifyDetached");
 		}
 
 	}

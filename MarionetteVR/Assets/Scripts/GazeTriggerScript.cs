@@ -22,7 +22,7 @@ public class GazeTriggerScript : MonoBehaviour {
 		// Direction from player to the target object (A to B = B-A)
 		Vector3 vectorFromCameraToTarget = transform.position - myCam.transform.position;
 
-		Debug.Log ("Camera direction: " + vectorFromCameraToTarget);
+//		Debug.Log ("Camera direction: " + vectorFromCameraToTarget);
 
 		// get angle between look direction and object's direction
 		float Angle = Vector3.Angle(camLookDir, vectorFromCameraToTarget);
