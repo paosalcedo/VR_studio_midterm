@@ -47,7 +47,7 @@ public class InteractionPickup : MonoBehaviour {
 
 		if (hand.GetStandardInteractionButtonDown () == true) { // on Vive controller, this is trigger
 			hand.AttachObject (gameObject);
-			stickHandle.SendMessage ("IdentifyAttached");
+//			stickHandle.SendMessage ("IdentifyAttached");
 
 			}
 		}
@@ -68,7 +68,7 @@ public class InteractionPickup : MonoBehaviour {
 
 		if ( hand.GetStandardInteractionButtonDown() == true ) { // on Vive controller, this is trigger
 			hand.DetachObject( gameObject );
-			stickHandle.SendMessage ("IdentifyDetached");
+//			stickHandle.SendMessage ("IdentifyDetached");
 		}
 
 	}

@@ -12,7 +12,7 @@ public class DoubleLimbControl : MonoBehaviour {
 
 	Transform attached;
 
-	bool isAttached = false;
+//	bool isAttached = false;
 
 
 	void Start () {
@@ -49,29 +49,29 @@ public class DoubleLimbControl : MonoBehaviour {
 		// Creating the 'Double Handle' when sticks are grabbed
 
 
-		if (attached.name == leftArm || attached.name == rightArm) {
-			handleUp = Instantiate(Resources.Load("Double Handle") as GameObject);
-			handleUp.transform.position = (parts[2].transform.position + parts[3].transform.position) / 2;
-		}
-
-		if (attached.name == leftLeg || attached.name == rightLeg) {
-			handleDown = Instantiate(Resources.Load("Double Handle") as GameObject);
-			handleDown.transform.position = (parts[0].transform.position + parts[1].transform.position) / 2;
-		}
-
-		if (handleUp != null && attached == handleUp.transform) {
-			for (int i = 2; i < parts.Length; i++) {
-				parts [i].transform.SetParent (attached);
-			}
-			isAttached = true;
-		}
-
-		if (handleDown != null && attached == handleDown.transform) {
-			for (int i = 3; i < parts.Length; i++) {
-				parts [i].transform.SetParent (attached);
-			}
-			isAttached = true;
-		}
+//		if (attached.name == leftArm || attached.name == rightArm) {
+//			handleUp = Instantiate(Resources.Load("Double Handle") as GameObject);
+//			handleUp.transform.position = (parts[2].transform.position + parts[3].transform.position) / 2;
+//		}
+//
+//		if (attached.name == leftLeg || attached.name == rightLeg) {
+//			handleDown = Instantiate(Resources.Load("Double Handle") as GameObject);
+//			handleDown.transform.position = (parts[0].transform.position + parts[1].transform.position) / 2;
+//		}
+//
+//		if (handleUp != null && attached == handleUp.transform) {
+//			for (int i = 2; i < parts.Length; i++) {
+//				parts [i].transform.SetParent (attached);
+//			}
+//			isAttached = true;
+//		}
+//
+//		if (handleDown != null && attached == handleDown.transform) {
+//			for (int i = 3; i < parts.Length; i++) {
+//				parts [i].transform.SetParent (attached);
+//			}
+//			isAttached = true;
+//		}
 	}
 
 	public void IdentifyDetached(){
@@ -85,31 +85,31 @@ public class DoubleLimbControl : MonoBehaviour {
 			}
 		}
 
-		if (attached.name == leftArm || attached.name == rightArm) {
-			if (!isAttached) {
-				Destroy (handleUp);
-			}
-		}
-
-		if (attached.name == leftLeg || attached.name == rightLeg) {
-			if (!isAttached) {
-				Destroy (handleDown);
-			}
-		}
-
-		if (handleUp != null && attached == handleUp.transform) {
-			for (int i = 2; i < parts.Length; i++) {
-				parts [i].transform.parent = null;
-			}
-			isAttached = false;
-		}
-
-		if (handleDown != null && attached == handleDown.transform) {
-			for (int i = 3; i < parts.Length; i++) {
-				parts [i].transform.parent = null;
-			}
-			isAttached = false;
-		}
+//		if (attached.name == leftArm || attached.name == rightArm) {
+//			if (!isAttached) {
+//				Destroy (handleUp);
+//			}
+//		}
+//
+//		if (attached.name == leftLeg || attached.name == rightLeg) {
+//			if (!isAttached) {
+//				Destroy (handleDown);
+//			}
+//		}
+//
+//		if (handleUp != null && attached == handleUp.transform) {
+//			for (int i = 2; i < parts.Length; i++) {
+//				parts [i].transform.parent = null;
+//			}
+//			isAttached = false;
+//		}
+//
+//		if (handleDown != null && attached == handleDown.transform) {
+//			for (int i = 3; i < parts.Length; i++) {
+//				parts [i].transform.parent = null;
+//			}
+//			isAttached = false;
+//		}
 	
 	}
 }
